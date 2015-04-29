@@ -1,6 +1,5 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
+
 
 import junit.framework.TestCase;
 /**
@@ -15,8 +14,8 @@ public class StudentAndCourseTest extends TestCase {
 		assertEquals("Doug Shook", s.getName());
 		assertEquals(111111, s.getStudentID());
 		//No credits, no GPA
-		assertEquals(0.0, s.getGPA());
-		assertEquals(0, s.getCredits());
+		assertEquals(0.0, s.getGPA(), .001);
+		assertEquals(0.0, s.getCredits(), .01);
 
         //Generate some random students, and test
 		for (int i = 0; i < 20; ++i) {
@@ -26,11 +25,29 @@ public class StudentAndCourseTest extends TestCase {
 			Student s3 = new Student("" + a, "" + b, c);
 			assertEquals(a + " " + b, s3.getName());
 			assertEquals(0.0, s3.getGPA());
-			assertEquals(0, s3.getCredits());
+			assertEquals(0.0, s3.getCredits());
 		}
+
+		assertEquals("Doug Shook 111111", s.toString());
+		assertEquals("Freshman", s.getClassStanding());
+		assertEquals(0.0, s.computeTuition());
+		//s.submitGrade(4,3.0);
+		//assertEquals(12.0, qScore);
 	}
 
-    //More tests should go here
+    @Test
+    public void testCourseInit() {
+
+		Course b = new Course("CompSci", "Shook", 3, 30);
+		assertEquals("CompSci 3", b.toString());
+		assertEquals(true, b.addStudent(new Student("mike", "davis", 123456)));
+		assertEquals(false, b.addStudent(new Student("mike", "davis", 123456)));
+		assertEquals(0.0, b.averageGPA());
+
+
+
+
+	}//More tests should go here
 
 }
 
