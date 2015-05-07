@@ -11,9 +11,16 @@
  *  throwing
  *  data validation
  *  creating your own exceptions
+ * Collections
+ *  ArrayLists
+ *  HashMaps
+ * Naming Conventions
+ * Debugger
  */
+
 public interface Measurable {
 
     public double getArea();
     public double getPerimeter();
+    public int getNumberOfSides();
 }

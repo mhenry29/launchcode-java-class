@@ -8,48 +8,35 @@ Here are some good references to check out before/while you work on this pset:
 * [Interfaces vs. Inheritance] (http://stackoverflow.com/questions/8531292/why-to-use-interfaces-multiple-inheritance-vs-interfaces-benefits-of-interface)
 * [Java Exception Lesson](https://docs.oracle.com/javase/tutorial/essential/exceptions/)
 * [Exceptions tutorial](http://www.tutorialspoint.com/java/java_exceptions.htm)
+* [HashMap tutorial](http://tutorialswithexamples.com/java-map-and-hashmap-tutorial-with-examples/)
+* [Reading a file with scanner](http://www.javaprogrammingforums.com/file-input-output-tutorials/339-reading-file-line-line-using-scanner-class.html)
 
-#Netflix
+#Cryptography
 
-Your task for this problem set is to create your own version of Netflix. Netflix consists of different movies and TV shows that can be watched on demand.
+Recall from CS50 that you [did a little bit of cryptography](http://cdn.cs50.net/2015/spring/psets/2/pset2/pset2.html#hail_caesar) using Caesar's Cipher and Vignere's Cipher. You will be creating those ciphers again, this time in Java.
 
-Your first task is to create a `Watchable` interface. Consider what movies and TV Shows have in common, then define the interface. In particular, your interface should be able to answer the following questions:
+First, create an interface called `Encodable`. This interface should have the following members:
 
-* Is this a TV show or a movie?
-* What is the running time of this show/movie?
-* When was it created?
-* Who is responsible for creating it?
+* encode
+* decode
 
 #Implementing your interface
 
-Once you are satisfied with your interface, you should implement it. Create a `TVShow` class and a `Movie` class that implements your interface. For `TVShow` you should make sure to include the following functionality:
+Once you are satisfied with your interface, you should implement it. Create a `Caesar` class and a `Vignere` class that implement your interface.
 
-* How many episodes are there?
-* How many episodes have I watched?
+For the Caesar cipher, you should create two additional methods: `createEncodeMap` and `createDecodeMap`. These methods should create `HashMaps` with a mapping of each character of the alphabet to the character it would be encoded/decoded to. For example, if created a Caesar Cipher with a key of 1, the encode map could be used like this:
 
-Write tests for your classes to ensure that they behave in the way you expect. Hint: implementing a `toString()` method in your classes will make the next part a lot easier!
+`Map<String, String> encodeMap = c.createEncodeMap();
+System.out.println(encodeMap.get("a");//would print "b"`
+
+The decode map would behave in a similar fashion.
+
+You may assume that everything is in lower or upper case to keep things simple. You can also assume that there will not be any spaces or other special characters.
 
 #Putting it all together
 
-Create a `Netflix` class that contains a set of TV Shows and movies for people to watch. You should also include an user interface that allows users to select TV Shows and Movies that they want to watch. It might look something like this:
+Once you have completed and thoroughly tested your code, notify the instructor.
 
-========
+#Extra
 
-Welcome to Netflix! Please make a selection:
-
-1. See a list of TV Shows.<br>
-2. See a list of Movies.<br>
-3. See a list of all TV Shows and Movies that you have watched.<br>
-4. Exit.<br>
-
-Please make a selection:
-
-=========
-
-The user at this point could enter a menu selection. If they select to see a list of Movies, for example, the menu would then display all of the movies that are in the system and allow the user to select one that they would like to watch.
-
-Use data validation to make sure the user selects an appropriate value. If they select an option that doesn't exist (or worse, give you an option that isn't even a number), prompt them to enter a different value until they give you one that is acceptable. Test this piece thoroughly to make sure that it can handle various incorrect inputs without crashing.
-
-#Extra stuff
-
-Consider the `Movie` class. Movies actually come in to primary forms: documentaries and narratives (which include comedies, dramas, etc.). How would this design change if you wanted to incorporate these two types of movies into your program? Implement and test your design.
+Extend your code to read in a file and encode/decode it (or both!). Make sure to handle Exceptions appropriately using try/catch.
