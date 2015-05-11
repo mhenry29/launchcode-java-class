@@ -13,6 +13,8 @@ Here are some resources to help with this problem set:
 The previous problem set, pset4, could have benefited from the Factory pattern. Your first task is to go back and refactor your code
 to incorporate the Factory Pattern. While you're at it, check the rest of your code for good design, and refactor as necessary.
 
+You should also check over your code to see if there is any unnecessary repetition, or unnecessary complexity. Refactor these out of your code, and make sure your tests still pass!
+
 # Part 2: Attack Robots
 
 Your task for the rest of this assignment will be to create a small game involving attack robots. We could say that a robot has-a:
