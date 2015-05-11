@@ -13,63 +13,98 @@ public class Vignere implements Encodable {
     private HashMap<Character, Character> charMap;
 
 
-    public Vignere (String newPhrase, String encryptionPhrase) {
+    public Vignere(String newPhrase, String encryptionPhrase) {
         this.phrase = newPhrase;
         this.key = encryptionPhrase;
 
     }
 
-    /* public void createEncodeMap (char letter, int key) {
+    public char createEncodeMap(char letter, int key) {
         charMap = new HashMap<>();
         int converted = 0;
 
         if (isLowerCase(letter)) {
             converted = ((int) letter - (int) 'a' + key) % 26 + (int) 'a';
-        }
-        else if (isUpperCase(letter)) {
+        } else if (isUpperCase(letter)) {
             converted = ((int) letter - (int) 'A' + key) % 26 + (int) 'A';
         }
-        charMap.put(letter, (char)converted);
-    } */
+        charMap.put(letter, (char) converted);
+        return charMap.get(letter);
+    }
 
 
     @Override
     public String encode() {
 
         int keycount = 0;
-        String encrytedText =  "";
+        String encrytedText = "";
 
 
         // iterate through string
-        for (int i=0; i < this.phrase.length(); i++)
-        {
-            // key is stored in the argv[1] from the command line, loop through the characters in the key
-            int key = (int)this.key.charAt(keycount);
+        for (int i = 0; i < this.phrase.length(); i++) {
+
+            int key = (int) this.key.charAt(keycount);
 
             // adjust key to refer to the position in the alphabet, not ASCII table
-            if (isLowerCase(key))
-            {
-                key = key-97;
+            if (isLowerCase(key)) {
+                key = key - 97;
             }
-            if (isUpperCase(key))
-            {
-                key = key-65;
+            if (isUpperCase(key)) {
+                key = key - 65;
             }
 
-            // if the "i"th character of the string is a letter proceed with encryption
-            //if isalpha(v[i])
             char c = this.phrase.charAt(i);
-            Caesar.createEncodeMap(c, key);
-            encrytedText += charMap.get(c);
+            encrytedText += createEncodeMap(c, key);
             keycount++;
+
+            if (keycount == this.key.length()) {
+                //reset position in key
+                keycount = 0;
+            }
         }
         return encrytedText;
+
     }
 
     @Override
     public String decode() {
-    return "hi";
+
+        int keycount = 0;
+        String decrytedText = "";
+
+        // iterate through string
+        for (int i = 0; i < this.phrase.length(); i++) {
+
+            int key = (int) this.key.charAt(keycount);
+
+            // adjust key to refer to the position in the alphabet, not ASCII table
+            if (isLowerCase(key)) {
+                key = key - 97;
+            }
+            if (isUpperCase(key)) {
+                key = key - 65;
+            }
+
+            char c = this.phrase.charAt(i);
+            decrytedText += createEncodeMap(c, -key);
+            keycount++;
+
+            if (keycount == this.key.length()) {
+                //reset position in key
+                keycount = 0;
+            }
+        }
+        return decrytedText;
+
     }
 
 
+    public static void main(String args[]) {
+        Vignere text1 = new Vignere("Hello", "abc");
+        Vignere text2 = new Vignere("Hfnlp", "abc");
+        System.out.println(text1.encode());
+        System.out.println(text2.decode());
+
+
     }
+}
