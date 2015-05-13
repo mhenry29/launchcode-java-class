@@ -1,7 +1,6 @@
 import java.util.HashMap;
+import static java.lang.Character.*;
 
-import static java.lang.Character.isLowerCase;
-import static java.lang.Character.isUpperCase;
 
 /**
  * Created by melissa on 5/7/15.
@@ -25,11 +24,13 @@ public class Caesar implements Encodable {
 
         for (int i = 0; i < this.phrase.length(); i++) {
             char c = this.phrase.charAt(i);
-            createEncodeMap(c);
-            encrytedText += charMap.get(c);
+            if (Character.isLetter(c)) {
+                createEncodeMap(c);
+                encrytedText += charMap.get(c);
             }
-        return encrytedText;
 
+        }
+        return encrytedText;
     }
 
 
@@ -38,8 +39,10 @@ public class Caesar implements Encodable {
         String decryptedText = "";
         for (int i = 0; i < this.phrase.length(); i++) {
             char c = this.phrase.charAt(i);
-            createEncodeMap(c, - getKey());
-            decryptedText += charMap.get(c);
+            if (Character.isLetter(c)) {
+                createEncodeMap(c, -getKey());
+                decryptedText += charMap.get(c);
+            }
         }
         return decryptedText;
     }
