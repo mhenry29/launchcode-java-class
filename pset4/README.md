@@ -1,13 +1,13 @@
-pset 4 - Strategy Design Pattern
+pset 4 - FightStrategy Design Pattern
 ======
 
 Here are some resources to help you with this pset:
 
-* [Mike Menne's Strategy Pattern video](http://tv.launchcode.us/#/videos/java_strategy?lesson=Java)
+* [Mike Menne's FightStrategy Pattern video](http://tv.launchcode.us/#/videos/java_strategy?lesson=Java)
 * [CS50 study contains information about various sorting algorithms](https://study.cs50.net/)
 * [Timing execution in Java](http://www.tutorialspoint.com/java/lang/system_nanotime.htm)
 
-For this problem set, you will be using the Strategy Design Pattern as well as getting a feel for various sorting algorithms.
+For this problem set, you will be using the FightStrategy Design Pattern as well as getting a feel for various sorting algorithms.
 
 First, create a `SortStrategy` interface. This interface should be very simple!
 

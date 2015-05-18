@@ -31,9 +31,11 @@ public class Question {
 
     /* check answer*/
     public boolean checkAnswer(String response) {
+        // check to see that there is not a ',' - meaning there is only one answer
         if (response.indexOf(',') == -1) {
-            return (response.equalsIgnoreCase(this.answerText));     // this is all that is needed
+            return (response.equalsIgnoreCase(this.answerText));     // will return true of false based on match
         }
+        // check to see if there is are multiple answers separated by a string
         else if (response.indexOf(',') != -1) {
             ArrayList<String> guesses = new ArrayList(Arrays.asList(response.split("\\s*,\\s*")));
             ArrayList<String> actualAnswers = new ArrayList(Arrays.asList(this.answerText.split("\\s*,\\s*")));

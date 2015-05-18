@@ -14,7 +14,7 @@ public class SortStrategyTest extends TestCase {
         Integer[] anotherSorted = {2, 4, 6, 7, 9, 9};
         assertEquals(sortArray, anotherSorted);
         Integer[] actual = s.sort();
-       // assertEquals(sortedArray, actual);
+        assertEquals(sortedArray, actual);
 
 
     }

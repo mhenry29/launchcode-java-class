@@ -57,6 +57,8 @@ public class Vignere implements Encodable {
             if (Character.isLetter(c)) {
                 encrytedText += createEncodeMap(c, key);
             }
+            // add special character, no encoding required
+            encrytedText += c;
             keycount++;
 
             if (keycount == this.key.length()) {
@@ -91,6 +93,8 @@ public class Vignere implements Encodable {
             if (Character.isLetter(c)) {
                 decrytedText += createEncodeMap(c, -key);
             }
+            // add special character, no encoding required
+            decrytedText += c;
             keycount++;
 
             if (keycount == this.key.length()) {

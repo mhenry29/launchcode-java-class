@@ -28,17 +28,17 @@ Your robots will inflict damage on each other based on their power. If a robot r
 
 To keep things simple, we will assume that the robots are restricted to movement in one direction. That is, they can move forward and backward, but not side to side.
 
-Our robots can attack and move, however they will be pre-programmed to operate based on a particular `Strategy`. Instead of telling the robot to attack or move directly, we want the robot to choose its next behavior based on its given strategy.
+Our robots can attack and move, however they will be pre-programmed to operate based on a particular `FightStrategy`. Instead of telling the robot to attack or move directly, we want the robot to choose its next behavior based on its given strategy.
 
 Your strategies should choose what to do next based on the robots helath, position, speed, etc.
 
-Create some strategies for your robots using the Strategy Pattern. Make sure your robot can accept a strategy and execute its next move based on its strategy. Some ideas for strategies could be:
+Create some strategies for your robots using the FightStrategy Pattern. Make sure your robot can accept a strategy and execute its next move based on its strategy. Some ideas for strategies could be:
 
 * Always attack no matter what
 * Always run away no matter what
 * Attack until health falls below a particular level, then run
 
-Create some strategies for your robots using the Strategy Pattern. Make sure your robot can accept a strategy and execute its next move based on its strategy. **Implement a factory to create strategies**.
+Create some strategies for your robots using the FightStrategy Pattern. Make sure your robot can accept a strategy and execute its next move based on its strategy. **Implement a factory to create strategies**.
 
 #It's time for battle!
 

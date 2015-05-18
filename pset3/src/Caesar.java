@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import static java.lang.Character.*;
+import java.io.*;
+
 
 
 /**
@@ -13,6 +15,10 @@ public class Caesar implements Encodable {
     private HashMap<Character, Character> charMap;
 
     public Caesar (String newPhrase, int newKey) {
+        if (newKey < 0)
+        {
+            throw new IllegalArgumentException("Invalid Key, must be greater than 0");
+        }
         this.phrase = newPhrase;
         this.key = newKey;
     }
@@ -28,7 +34,8 @@ public class Caesar implements Encodable {
                 createEncodeMap(c);
                 encrytedText += charMap.get(c);
             }
-
+            // add the special character, no encoding required
+            else encrytedText += c;
         }
         return encrytedText;
     }
@@ -43,6 +50,8 @@ public class Caesar implements Encodable {
                 createEncodeMap(c, -getKey());
                 decryptedText += charMap.get(c);
             }
+            // add any special characters without decoding
+            else decryptedText += c;
         }
         return decryptedText;
     }
@@ -82,8 +91,16 @@ public class Caesar implements Encodable {
     }
 
     public static void main(String args[]) {
-        Caesar text1 = new Caesar("Hello", 1);
-        Caesar text2 = new Caesar("Ifmmp", 1);
+        Caesar text1;
+        Caesar text2;
+
+        try {
+            text1 = new Caesar("Hello!", 77);
+            text2 = new Caesar("If mmp", 1);
+        } catch ( IllegalArgumentException iae ) {
+            iae.printStackTrace();
+            throw iae;
+        }
 
         System.out.println("Encoding: " + text1.getPhrase());
         System.out.println(text1.encode());

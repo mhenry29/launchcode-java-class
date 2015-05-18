@@ -1,4 +1,6 @@
 import com.sun.media.jfxmedia.events.BufferListener;
+import sun.misc.Sort;
+
 import java.io.*;
 import java.util.*;
 import java.lang.*;
@@ -23,10 +25,15 @@ public class ArraySorter {
        int selection = 0;
        Integer[] a = {7, 2, 2, 8, 9};
        Integer[] b = {45,23,11,89,77,98,4,28,65,43};
-       BubbleSort s = new BubbleSort(a);
-       MergeSort m = new MergeSort(a);
-       ArraySorter bs = new ArraySorter(s);
-       ArraySorter ms = new ArraySorter(m);
+
+       ArraySorter bs = new ArraySorter(new BubbleSort(b));
+       ArraySorter ms = new ArraySorter(new MergeSort(b));
+
+        // Using a factory to create our objects
+       SortStrategy fbs = SortStrategyFactory.getBubbleSort(a);
+       SortStrategy fms = SortStrategyFactory.getMergeSort(a);
+
+
 
         Scanner scanner = new Scanner(System.in);
         do  {
@@ -55,8 +62,8 @@ public class ArraySorter {
         ms.sorted();
         long endTime2 = System.currentTimeMillis();
 
-        writer.write("BubbleSort: " + Arrays.toString(s.sort()) + "\tTime: " + (endTime1 - startTime1) + " milliseconds\n");
-        writer.write("MergeSort Time: " + Arrays.toString(m.sort()) + "\tTime: " + (endTime2 - startTime2) + " milliseconds\n");
+        writer.write("BubbleSort: " + Arrays.toString(fbs.sort()) + "\tTime: " + (endTime1 - startTime1) + " milliseconds\n");
+        writer.write("MergeSort Time: " + Arrays.toString(fms.sort()) + "\tTime: " + (endTime2 - startTime2) + " milliseconds\n");
         writer.close();
 
     }
