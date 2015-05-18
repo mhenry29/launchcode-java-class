@@ -5,13 +5,8 @@ public class AttackFightStrategy implements FightStrategy {
 
 
     @Override
-    public void attack() {
-        System.out.println("Arrrggh! Attack!");
-    }
-
-    @Override
-    public void move() {
-        System.out.println("I'll never run away!");
+    public void fight(Robot decider) {
+        System.out.println(decider.getName() + " is challenger...Arrrggh! Attack!");
 
     }
 }

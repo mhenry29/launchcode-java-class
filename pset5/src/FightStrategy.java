@@ -3,7 +3,5 @@
  */
 public interface FightStrategy {
 
-    public void attack();
-
-    public void move();
+    public void fight(Robot robot);
 }

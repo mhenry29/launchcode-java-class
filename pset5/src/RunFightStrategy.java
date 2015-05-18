@@ -3,15 +3,9 @@
  */
 public class RunFightStrategy implements FightStrategy {
 
-    @Override
-    public void attack() {
-        System.out.println("\tI don't attack");
-
-    }
 
     @Override
-    public void move() {
-        System.out.println("\tRunning Away!");
-
+    public void fight(Robot decider) {
+        System.out.println(decider.getName() + " is challenger and is running away!");
     }
 }
